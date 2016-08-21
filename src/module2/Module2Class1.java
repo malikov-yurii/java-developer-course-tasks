@@ -84,13 +84,13 @@ public class Module2Class1 {
         return max;
     }
 
-    // according to task of homework we deal only with natural nambers [1, 2, 3, ..., ∞)
+    // according to task of homework we deal only with natural numbers [1, 2, 3, ..., ∞)
     // so getMax() and getMaxPositive have same logic
     public static int getMaxPositive(int[] numbers) {
         return getMax(numbers);
     }
 
-    // according to task of homework we deal only with natural nambers [1, 2, 3, ..., ∞)
+    // according to task of homework we deal only with natural numbers [1, 2, 3, ..., ∞)
     // so getMax() and getMaxPositive have same logic
     public static int getMaxPositive(double[] numbers) {
         return getMax(numbers);
