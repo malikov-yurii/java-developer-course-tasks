@@ -6,7 +6,7 @@ public class Solution {
     //HOMEWORK 2.1
 
     // It can remove unnecessary zeros in the end of double
-    public static String getGoodLookingDoubleForPrint(double d) {
+    public static String getNiceStringFromDouble(double d) {
         int i = (int) d;
         return i == d ? String.valueOf(i) : String.valueOf(d);
     }
@@ -17,8 +17,8 @@ public class Solution {
         if (newBalance < 0)
             System.out.println("NO");
         else
-            System.out.println("YES " + getGoodLookingDoubleForPrint(withdrawal * 0.05) + " " +
-                    getGoodLookingDoubleForPrint(newBalance));
+            System.out.println("YES " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
+                    getNiceStringFromDouble(newBalance));
 
         return newBalance;
     }
@@ -43,8 +43,8 @@ public class Solution {
                 if (newBalance < 0)
                     System.out.println("NO " + names[i]);
                 else
-                    System.out.println(names[i] + " " + getGoodLookingDoubleForPrint(withdrawal) + " " +
-                            getGoodLookingDoubleForPrint(newBalance));
+                    System.out.println(names[i] + " " + getNiceStringFromDouble(withdrawal) + " " +
+                            getNiceStringFromDouble(newBalance));
             }
         return -1;
     }
@@ -57,7 +57,7 @@ public class Solution {
         int[] balances = getBalancesArray();
         for (int i = 0; i < names.length; i++)
             if (ownerName.equals(names[i]))
-                System.out.println(names[i] + " " + getGoodLookingDoubleForPrint(balances[i] + fund));
+                System.out.println(names[i] + " " + getNiceStringFromDouble(balances[i] + fund));
         return -1;
     }
 
