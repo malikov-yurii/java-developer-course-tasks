@@ -1,4 +1,4 @@
-package module1;
+package module01.task01;
 
 public class Fourth {
     public static void main(String[] args) {
