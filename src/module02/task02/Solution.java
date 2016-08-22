@@ -14,13 +14,14 @@ public class Solution {
     static double withdrawBalance(double balance, double withdrawal) {
         double newBalance = balance - withdrawal * 1.05;
 
-        if (newBalance < 0)
+        if (newBalance < 0) {
             System.out.println("NO");
-        else
+            return balance;
+        }  else {
             System.out.println("YES " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
                     getNiceStringFromDouble(newBalance));
-
-        return newBalance;
+            return newBalance;
+        }
     }
 
     //HOMEWORK 2.2
@@ -40,11 +41,15 @@ public class Solution {
         for (int i = 0; i < names.length; i++)
             if (ownerName.equals(names[i])) {
                 double newBalance = balances[i] - withdrawal * 1.05;
-                if (newBalance < 0)
+                if (newBalance < 0) {
                     System.out.println("NO " + names[i]);
-                else
+                    return balances[i];
+                }
+                else {
                     System.out.println(names[i] + " " + getNiceStringFromDouble(withdrawal) + " " +
                             getNiceStringFromDouble(newBalance));
+                    return newBalance;
+                }
             }
         return -1;
     }
@@ -56,8 +61,11 @@ public class Solution {
         String[] names = getOwnerNamesArray();
         int[] balances = getBalancesArray();
         for (int i = 0; i < names.length; i++)
-            if (ownerName.equals(names[i]))
-                System.out.println(names[i] + " " + getNiceStringFromDouble(balances[i] + fund));
+            if (ownerName.equals(names[i])) {
+                double newBalance = balances[i] + fund;
+                System.out.println(names[i] + " " + getNiceStringFromDouble(newBalance));
+                return newBalance;
+            }
         return -1;
     }
 
