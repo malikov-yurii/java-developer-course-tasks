@@ -12,25 +12,25 @@ public class Solution {
             typeName = new BufferedReader(new InputStreamReader(System.in)).readLine();
 
             if ("double".equals(typeName)) {
-                double[] doubleArray = {-1.0, 2.3, 234.65, 234.45, -3452.12, 4.45, -456.97, 4356.789, 3456.48, 4.0};
+                double[] doubleArray = {-3.3333, 2.3, 234.65, 234.45, -3452.12, 4.45, -456.97, 4356.789, 3456.48, 0};
                 System.out.println("Now we'll test methods with double[]");
                 System.out.println("Summary of double array items = " + sum(doubleArray));
                 System.out.println("Minimum item of double array = " + min(doubleArray));
                 System.out.println("Maximum item of double array items = " + max(doubleArray));
                 System.out.println("Maximum positive item of double array items = " + maxPositive(doubleArray));
                 System.out.println("Multiplication of double array items = " + multiplication(doubleArray));
-                System.out.println("Modulus of first and last element of double array = " + modulus(doubleArray));
+                try {System.out.println("Modulus of first and last element of double array = " + modulus(doubleArray));}catch(ArithmeticException e){}
                 System.out.println("Second largest element of double array = " + secondLargest(doubleArray));
                 System.out.println("\nPlease enter type of array you would like to create (int/double). Or type exit to stop application.");
             } else if ("int".equals(typeName)) {
-                int[] intArray = {1, 2, -234, 234, -3452, 4, 456, -4356, 3456, 4};
+                int[] intArray = {7456, 2, -234, 234, -3452, 4, 456, -4356, 3456, 0};
                 System.out.println("Now we'll test methods with int[]");
                 System.out.println("Summary of int array items = " + sum(intArray));
                 System.out.println("Minimum item of int array = " + min(intArray));
                 System.out.println("Maximum item of int array items = " + max(intArray));
                 System.out.println("Maximum positive item of int array items = " + maxPositive(intArray));
                 System.out.println("Multiplication of int array items = " + multiplication(intArray));
-                System.out.println("Modulus of first and last element of int array = " + modulus(intArray));
+                try {System.out.println("Modulus of first and last element of int array = " + modulus(intArray));}catch(ArithmeticException e){}
                 System.out.println("Second largest element of int array = " + secondLargest(intArray));
                 System.out.println("\nPlease enter type of array you would like to create (int/double). Or type exit to stop application.");
             } else if (("exit".equals(typeName))) {
@@ -49,7 +49,7 @@ public class Solution {
     }
 
     public static double sum(double[] numbers) {
-        int sum = 0;
+        double sum = 0;
         for (double x : numbers)
             sum += x;
         return sum;
@@ -121,12 +121,24 @@ public class Solution {
         return multiplication;
     }
 
-    public static int modulus(int numbers[]) {
-        return numbers[0] % numbers[numbers.length - 1];
+    // it the only solution I came up with (about zero)
+    public static int modulus(int numbers[])  throws ArithmeticException{
+        if (numbers[numbers.length - 1] != 0)
+            return numbers[0] % numbers[numbers.length - 1];
+        else{
+            System.out.println("Can not execute modulus. Error: division by zero.");
+            throw new ArithmeticException();
+        }
     }
 
-    public static double modulus(double[] numbers) {
-        return numbers[0] % numbers[numbers.length - 1];
+    // it the only solution I came up with (about zero)
+    public static double modulus(double[] numbers) throws ArithmeticException{
+        if (numbers[numbers.length - 1] != 0)
+            return numbers[0] % numbers[numbers.length - 1];
+        else {
+            System.out.println("Can not execute modulus. Error: division by zero.");
+            throw new ArithmeticException();
+        }
     }
 
 

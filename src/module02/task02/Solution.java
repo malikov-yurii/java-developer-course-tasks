@@ -18,7 +18,7 @@ public class Solution {
             System.out.println("NO");
             return balance;
         }  else {
-            System.out.println("YES " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
+            System.out.println("OK " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
                     getNiceStringFromDouble(newBalance));
             return newBalance;
         }
