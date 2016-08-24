@@ -1,7 +1,8 @@
 package module02.task02;
 
-
 public class Solution {
+    static int[] balances = {1200, 250, 2000, 500, 3200};
+    static String[] ownerNames = {"Jane", "Ann", "Jack", "Oww", "Lane"};
 
     //HOMEWORK 2.1
 
@@ -12,45 +13,16 @@ public class Solution {
     }
 
     static double withdrawBalance(double balance, double withdrawal) {
-        double newBalance = balance - withdrawal * 1.05;
-
-        if (newBalance < 0) {
-            System.out.println("NO");
-            return balance;
-        }  else {
-            System.out.println("OK " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
-                    getNiceStringFromDouble(newBalance));
-            return newBalance;
-        }
+        return balance - withdrawal * 1.05;
     }
 
     //HOMEWORK 2.2
 
-    static String[] getOwnerNamesArray() {
-        return new String[]{"Jane", "Ann", "Jack", "Oww", "Lane"};
-    }
-
-    static int[] getBalancesArray() {
-        return new int[]{1200, 250, 2000, 500, 3200};
-    }
-
     // method returns -1 if fails
     static double withdrawBalance(String ownerName, double withdrawal) {
-        String[] names = getOwnerNamesArray();
-        int[] balances = getBalancesArray();
-        for (int i = 0; i < names.length; i++)
-            if (ownerName.equals(names[i])) {
-                double newBalance = balances[i] - withdrawal * 1.05;
-                if (newBalance < 0) {
-                    System.out.println("NO " + names[i]);
-                    return balances[i];
-                }
-                else {
-                    System.out.println(names[i] + " " + getNiceStringFromDouble(withdrawal) + " " +
-                            getNiceStringFromDouble(newBalance));
-                    return newBalance;
-                }
-            }
+        for (int i = 0; i < ownerNames.length; i++)
+            if (ownerName.equals(ownerNames[i]))
+                return withdrawBalance(balances[i], withdrawal);
         return -1;
     }
 
@@ -58,29 +30,50 @@ public class Solution {
 
     // method returns -1 if fails
     static double fundBalance(String ownerName, double fund) {
-        String[] names = getOwnerNamesArray();
-        int[] balances = getBalancesArray();
-        for (int i = 0; i < names.length; i++)
-            if (ownerName.equals(names[i])) {
-                double newBalance = balances[i] + fund;
-                System.out.println(names[i] + " " + getNiceStringFromDouble(newBalance));
-                return newBalance;
-            }
+        for (int i = 0; i < ownerNames.length; i++)
+            if (ownerName.equals(ownerNames[i]))
+                return balances[i] + fund;
         return -1;
     }
 
     public static void main(String[] args) {
 
-        int[] balances = {1200, 250, 2000, 500, 3200};
-        String[] ownerNames = {"Jane", "Ann", "Jack", "Oww", "Lane"};
+//      Testing 2.1
 
-        int[] balances1 = {200, 200, 500, 4000, 30};
+        double withdrawalResult = withdrawBalance(100, 10);
+        if (withdrawalResult < 0)
+            System.out.println("NO");
+        else
+            System.out.println("OK " + getNiceStringFromDouble(10 * 0.05) + " " +
+                    getNiceStringFromDouble(withdrawalResult));
 
-        // some testing
-        withdrawBalance(100, 10);
-        withdrawBalance(100, 99);
-        withdrawBalance("Ann", 100);
-        withdrawBalance("Oww", 490);
-        fundBalance("Oww", 100);
+        withdrawalResult = withdrawBalance(100, 99);
+        if (withdrawalResult < 0)
+            System.out.println("NO");
+        else
+            System.out.println("OK " + getNiceStringFromDouble(99 * 0.05) + " " +
+                    getNiceStringFromDouble(withdrawalResult));
+
+//      Testing 2.2
+
+        withdrawalResult = withdrawBalance("Ann", 100);
+        if (withdrawalResult != -1)
+            if (withdrawalResult < 0)
+                System.out.println("NO Ann");
+            else
+                System.out.println("Ann 100 " + getNiceStringFromDouble(withdrawalResult));
+
+        withdrawalResult = withdrawBalance("Oww", 490);
+        if (withdrawalResult != -1)
+            if (withdrawalResult < 0)
+                System.out.println("NO Oww");
+            else
+                System.out.println("Oww 490" + getNiceStringFromDouble(withdrawalResult));
+
+//      Testing 2.3
+
+        System.out.println("Oww " + ((!("-1".equals(getNiceStringFromDouble(withdrawBalance("Oww", 100))))) ?
+                                    getNiceStringFromDouble(fundBalance("Oww", 100)) :
+                                    "not found such name in database"));
     }
 }
