@@ -56,24 +56,28 @@ public class Solution {
 
 //      Testing 2.2
 
-        withdrawalResult = withdrawBalance("Ann", 100);
+        double withdrawal = 100;
+        String name = "Ann";
+        withdrawalResult = withdrawBalance(name, withdrawal);
         if (withdrawalResult != -1)
             if (withdrawalResult < 0)
-                System.out.println("NO Ann");
+                System.out.println("NO " + name);
             else
-                System.out.println("Ann 100 " + getNiceStringFromDouble(withdrawalResult));
+                System.out.println(name + " " + getNiceStringFromDouble(withdrawal) + " "  + getNiceStringFromDouble(withdrawalResult));
 
-        withdrawalResult = withdrawBalance("Oww", 490);
+        withdrawal = 490;
+        name = "Oww";
+        withdrawalResult = withdrawBalance(name, 490);
         if (withdrawalResult != -1)
             if (withdrawalResult < 0)
-                System.out.println("NO Oww");
+                System.out.println(name + " NO");
             else
-                System.out.println("Oww 490" + getNiceStringFromDouble(withdrawalResult));
+                System.out.println(name + "" + withdrawal + " " + getNiceStringFromDouble(withdrawalResult));
 
 //      Testing 2.3
-
-        System.out.println("Oww " + ((!("-1".equals(getNiceStringFromDouble(withdrawBalance("Oww", 100))))) ?
-                                    getNiceStringFromDouble(fundBalance("Oww", 100)) :
+        double fundAmount = 100;
+        System.out.println(name + " " + ((!("-1".equals(getNiceStringFromDouble(withdrawBalance(name, fundAmount))))) ?
+                                    getNiceStringFromDouble(fundBalance(name, fundAmount)) :
                                     "not found such name in database"));
     }
 }
