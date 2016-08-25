@@ -39,24 +39,25 @@ public class Solution {
     public static void main(String[] args) {
 
 //      Testing 2.1
-
-        double withdrawalResult = withdrawBalance(100, 10);
+        double withdrawal = 10;
+        double withdrawalResult = withdrawBalance(100, withdrawal);
         if (withdrawalResult < 0)
             System.out.println("NO");
         else
-            System.out.println("OK " + getNiceStringFromDouble(10 * 0.05) + " " +
+            System.out.println("OK " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
                     getNiceStringFromDouble(withdrawalResult));
 
-        withdrawalResult = withdrawBalance(100, 99);
+        withdrawal = 99;
+        withdrawalResult = withdrawBalance(100, withdrawal);
         if (withdrawalResult < 0)
             System.out.println("NO");
         else
-            System.out.println("OK " + getNiceStringFromDouble(99 * 0.05) + " " +
+            System.out.println("OK " + getNiceStringFromDouble(withdrawal * 0.05) + " " +
                     getNiceStringFromDouble(withdrawalResult));
 
 //      Testing 2.2
 
-        double withdrawal = 100;
+        withdrawal = 100;
         String name = "Ann";
         withdrawalResult = withdrawBalance(name, withdrawal);
         if (withdrawalResult != -1)
@@ -67,7 +68,7 @@ public class Solution {
 
         withdrawal = 490;
         name = "Oww";
-        withdrawalResult = withdrawBalance(name, 490);
+        withdrawalResult = withdrawBalance(name, withdrawal);
         if (withdrawalResult != -1)
             if (withdrawalResult < 0)
                 System.out.println(name + " NO");
