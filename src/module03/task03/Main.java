@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        Course[] courses = {new Course(new Date(156546541), "Math"),new Course(20, "Physics", "Robert Black"),
+        Course[] courses = {new Course(new Date(), "Math"),new Course(20, "Physics", "Robert Black"),
                 new Course(45, "Literature", "William Shecrth"),new Course(43, "Jurisprudence", "Steaven Fry"),new Course(23, "History", "Arnold Merphy")};
         Student student1 = new Student("Iggy", "Pop", 3);
         Student student2 = new Student("Swanshtiger", courses);

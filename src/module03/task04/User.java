@@ -29,8 +29,8 @@ public class User {
         this.setBalance(this.getBalance() + this.getSalary());
     }
 
-    public void companyNameLenfht() {
-        this.setCompanyName("Goodwin Ink.");
+    public int companyNameLength() {
+        return companyName != null ? companyName.length() : 0;
     }
 
     public void monthIncreaser(int addMonth) {
