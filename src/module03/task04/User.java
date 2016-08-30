@@ -8,8 +8,15 @@ public class User {
     private int salary;
     private String currency;
 
+    //  if there is not enough money, Exception is thrown
+    public void withdraw(int summ) throws Exception{
+    if (this.getBalance() >= summ)
+        this.setBalance(this.getBalance() - (int)(summ < 1000 ? summ * 1.05 : summ * 1.1));
+        else
+            throw new Exception("Not enough money on balance to execute withdraw operation.");
+    }
+
     public void paySalary(){this.setBalance(this.getBalance() + this.getSalary());}
-    public void withdraw(int summ){this.setBalance(this.getBalance() - (int)(summ < 1000 ? summ * 1.05 : summ * 1.1));}
     public void companyNameLenfht(){this.setCompanyName("Goodwin Ink.");}
     public void monthIncreaser(int addMonth){this.setMonthsOfEmployment(this.getMonthsOfEmployment() + addMonth);}
 
