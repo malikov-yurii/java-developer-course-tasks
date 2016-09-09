@@ -6,22 +6,44 @@ public class EUBank extends Bank {
     }
 
     @Override
-    int getLimitOfWithdrawal() {
+    public int getLimitOfWithdrawal() {
+        if (Currency.USD.equals(getCurrency()))
+            return 2000;
+        if (Currency.EUR.equals(getCurrency()))
+            return 2200;
         return 0;
     }
 
     @Override
-    int getLimitOfFunding() {
+    public int getLimitOfFunding() {
+        if (Currency.USD.equals(getCurrency()))
+            return 10000;
+        if (Currency.EUR.equals(getCurrency()))
+            return 20000;
         return 0;
     }
 
     @Override
-    int getMonthlyRate() {
+    public int getMonthlyRate(){
+        if (Currency.USD.equals(getCurrency()))
+            return 0;
+        if (Currency.EUR.equals(getCurrency()))
+            return 1;
         return 0;
     }
 
     @Override
-    int getCommision(int summ) {
+    public int getCommision(int summ){
+        if (Currency.USD.equals(getCurrency()))
+            if (summ < 1000)
+                return 5;
+            else
+                return 7;
+        if (Currency.EUR.equals(getCurrency()))
+            if (summ < 1000)
+                return 2;
+            else
+                return 4;
         return 0;
     }
 }
