@@ -7,43 +7,37 @@ public class ChinaBank extends Bank {
 
     @Override
     public int getLimitOfWithdrawal() {
-        if (Currency.USD.equals(getCurrency()))
-            return 100;
-        if (Currency.EUR.equals(getCurrency()))
-            return 150;
+        switch (getCurrency()) {
+            case USD : return 100;
+            case EUR : return 150;
+        }
         return 0;
     }
 
     @Override
     public int getLimitOfFunding() {
-        if (Currency.USD.equals(getCurrency()))
-            return 10000;
-        if (Currency.EUR.equals(getCurrency()))
-            return 5000;
+        switch (getCurrency()) {
+            case USD : return 10000;
+            case EUR : return 5000;
+        }
         return 0;
     }
 
     @Override
     public int getMonthlyRate(){
-        if (Currency.USD.equals(getCurrency()))
-            return 1;
-        if (Currency.EUR.equals(getCurrency()))
-            return 0;
+        switch (getCurrency()) {
+            case USD : return 1;
+            case EUR : return 0;
+        }
         return 0;
     }
 
     @Override
-    public int getCommision(int summ){
-        if (Currency.USD.equals(getCurrency()))
-            if (summ < 1000)
-                return 3;
-            else
-                return 5;
-        if (Currency.EUR.equals(getCurrency()))
-            if (summ < 1000)
-                return 10;
-            else
-                return 11;
+    public int getCommission(int summ){
+        switch (getCurrency()) {
+            case USD : return summ < 1000 ? 3 : 5;
+            case EUR : return summ < 1000 ? 10 : 11;
+        }
         return 0;
     }
 }

@@ -3,7 +3,7 @@ package module04;
 public class BankSystemImpl implements BankSystem {
     @Override
     public void withdrawOfUser(User user, int amount) {
-        double withdrawal = amount * (1 + user.getBank().getCommision(amount) / 100);
+        double withdrawal = amount * (1 + user.getBank().getCommission(amount) / 100);
         if ((amount < user.getBank().getLimitOfWithdrawal()) && (user.getBalance() >= withdrawal))
             user.setBalance(user.getBalance() - withdrawal);
         else
@@ -15,7 +15,7 @@ public class BankSystemImpl implements BankSystem {
         if (amount < user.getBank().getLimitOfFunding())
             user.setBalance(user.getBalance() + amount);
         else
-            System.out.println("Funding operation failed.");
+            System.out.println("Funding operation failed!");
     }
 
     @Override
