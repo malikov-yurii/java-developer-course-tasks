@@ -22,16 +22,13 @@ public class BankSystemImpl implements BankSystem {
     public void transferMoney(User fromUser, User toUser, int amount) {
         double fromUserBalance = fromUser.getBalance();
         double toUserBalance = toUser.getBalance();
-        if (fromUserBalance >= amount)
-            try {
-                fromUser.setBalance(fromUserBalance - amount);
-                toUser.setBalance(toUserBalance + amount);
-                return;
-            } catch (Throwable t) {
-                fromUser.setBalance(fromUserBalance);
-                toUser.setBalance(toUserBalance);
-            }
-        System.out.println("Transfer operation failed.");
+        if ((fromUserBalance >= amount)
+                && (fromUser.getBank().getLimitOfWithdrawal() >= amount)
+                && (toUser.getBank().getLimitOfFunding() >= amount))  {
+            fromUser.setBalance(fromUserBalance - amount);
+            toUser.setBalance(toUserBalance + amount);
+        }else
+            System.out.println("Transfer operation failed.");
     }
 
     @Override
