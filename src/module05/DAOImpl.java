@@ -1,6 +1,6 @@
 package module05;
 
-public class RoomDAOImpl implements RoomDAO {
+public class DAOImpl implements DAO {
     @Override
     public Room save(Room room) {
         System.out.println("Operation \"save\"  :  object \"" + room + "\"");
