@@ -6,46 +6,42 @@ import java.util.stream.Collectors;
 public class UserUtils {
 
     public static User[] uniqueUsers(User[] users) {
-        return (User[]) Arrays.asList(users)
-                .stream()
+        return Arrays.stream(users)
                 .distinct()
-                .collect(Collectors.toList())
-                .toArray();
+                .toArray(User[]::new);
     }
 
     public static User[] usersWithConditionalBalance(User[] users, int balance) {
-        return (User[]) Arrays.asList(users)
-                .stream()
-                .filter(user -> user.getBalance() == balance)
-                .collect(Collectors.toList())
-                .toArray();
+        return Arrays.stream(users)
+                .filter(user -> {
+                    if (user == null) return false;
+                    if (user.getBalance() == balance)
+                        return true;
+                    else return false;
+                })
+                .toArray(User[]::new);
     }
 
     public static final User[] paySalaryToUsers(User[] users) {
-        return (User[]) Arrays.asList(users)
-                .stream()
+        return Arrays.stream(users)
+                .filter(user -> user != null)
                 .map(user -> {
                     user.setBalance(user.getBalance() + user.getSalary());
                     return user;
                 })
-                .collect(Collectors.toList())
-                .toArray();
+                .toArray(User[]::new);
     }
 
     public static final long[] getUsersId(User[] users) {
-        return Arrays.asList(users)
-                .stream()
+        return Arrays.stream(users)
+                .filter(user -> user != null)
                 .mapToLong(User::getId)
                 .toArray();
     }
 
     public static User[] deleteEmptyUsers(User[] users) {
-        return (User[]) Arrays.asList(users)
-                .stream()
-                .filter(user -> user == null)
-                .collect(Collectors.toList())
-                .toArray();
+        return Arrays.stream(users)
+                .filter(user -> user != null)
+                .toArray(User[]::new);
     }
-
-
 }
