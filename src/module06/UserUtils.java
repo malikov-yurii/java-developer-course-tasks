@@ -25,10 +25,7 @@ public class UserUtils {
     public static final User[] paySalaryToUsers(User[] users) {
         return Arrays.stream(users)
                 .filter(user -> user != null)
-                .map(user -> {
-                    user.setBalance(user.getBalance() + user.getSalary());
-                    return user;
-                })
+                .map(user -> new User(user.getId(), user.getFirstName(), user.getLastName(), user.getSalary(), user.getBalance() + user.getSalary()))
                 .toArray(User[]::new);
     }
 

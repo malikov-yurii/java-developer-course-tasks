@@ -7,7 +7,6 @@ public class User {
     private int salary;
     private int balance;
 
-
     public User(long id, String firstName, String lastName, int salary, int balance) {
         this.id = id;
         this.firstName = firstName;
