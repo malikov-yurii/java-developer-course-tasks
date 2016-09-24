@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public final class ArraysUtils {
 
-    public static final int[] reverse(int[] array){
+    public static final int[] reverse(int[] array) {
         // arrayCopy is created in order to not to change original array
         int[] newArray = Arrays.copyOf(array, array.length);
         for (int i = 0; i < (array.length / 2); i++) {
@@ -16,7 +16,7 @@ public final class ArraysUtils {
         return newArray;
     }
 
-    public final static int[] findEvenElements(int[] array){
+    public final static int[] findEvenElements(int[] array) {
         return IntStream.of(array).filter(i -> i % 2 == 0).toArray();
     }
 
