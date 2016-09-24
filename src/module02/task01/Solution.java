@@ -171,21 +171,19 @@ public class Solution {
             } else if ("int".equals(typeName)) {
                 int[] intArray = {7, 2, -234, -3, 4, 46, 45, 7};
                 System.out.println("Now we'll test methods with int[] : " + Arrays.toString(intArray));
-
-                System.out.println("Summary of int array items = " + sum(intArray));
+                System.out.println("Summary of int array items = " + ArraysUtils.sum(intArray));
                 System.out.println("Find even elements = " + Arrays.toString(ArraysUtils.findEvenElements(intArray)));
                 System.out.println("Reverse array = " + Arrays.toString(ArraysUtils.reverse(intArray)));
-
-                System.out.println("Minimum item of int array = " + min(intArray));
-                System.out.println("Maximum item of int array items = " + max(intArray));
-                System.out.println("Maximum positive item of int array items = " + maxPositive(intArray));
-                System.out.println("Multiplication of int array items = " + multiplication(intArray));
+                System.out.println("Minimum item of int array = " + ArraysUtils.min(intArray));
+                System.out.println("Maximum item of int array items = " + ArraysUtils.max(intArray));
+                System.out.println("Maximum positive item of int array items = " + ArraysUtils.maxPositive(intArray));
+                System.out.println("Multiplication of int array items = " + ArraysUtils.multiplication(intArray));
                 try {
-                    System.out.println("Modulus of first and last element of int array = " + modulus(intArray));
+                    System.out.println("Modulus of first and last element of int array = " + ArraysUtils.modulus(intArray));
                 } catch (ArithmeticException e) {
                     System.out.println("Can not execute modulus. Error: division by zero.");
                 }
-                System.out.println("Second largest element of int array = " + secondLargest(intArray));
+                System.out.println("Second largest element of int array = " + ArraysUtils.secondLargest(intArray));
                 System.out.println("\nPlease enter type of array you would like to create (int/double). Or type exit to stop application.");
             } else if (("exit".equals(typeName))) {
                 System.out.println("Goodbye!");
