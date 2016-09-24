@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class ArraysUtils {
 
-    public static final int[] reverse(int[] array) {
+    public static final int[] reverse(int[] array){
         // arrayCopy is created in order to not to change original array
         int[] newArray = Arrays.copyOf(array, array.length);
         for (int i = 0; i < (array.length / 2); i++) {
@@ -16,7 +16,7 @@ public class ArraysUtils {
         return newArray;
     }
 
-    public final static int[] findEvenElements(int[] array) {
+    public final static int[] findEvenElements(int[] array){
         return IntStream.of(array).filter(i -> i % 2 == 0).toArray();
     }
 
@@ -39,10 +39,7 @@ public class ArraysUtils {
     }
 
     public static final long multiplication(int array[]) {
-        long result = 1;
-        for (int x : array)
-            result *= x;
-        return result;
+        return IntStream.of(array).reduce((result, item) -> result * item).getAsInt();
     }
 
     // it is the only solution I came up with (about zero)
@@ -58,7 +55,6 @@ public class ArraysUtils {
         // arrayCopy is created in order to not to change original external array
         int[] arrayCopy = Arrays.copyOf(array, array.length);
         int bufferVariable;
-
         for (int k = arrayCopy.length - 1; k >= 0; k--) {
             for (int i = 0; i < k; i++)
                 if (arrayCopy[i] > arrayCopy[i + 1]) {
@@ -70,7 +66,6 @@ public class ArraysUtils {
                 if (arrayCopy[k] != arrayCopy[k + 1])
                     return arrayCopy[k];
         }
-
         return Integer.MIN_VALUE;
     }
 }

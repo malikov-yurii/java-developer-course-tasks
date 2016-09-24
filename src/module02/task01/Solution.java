@@ -169,7 +169,7 @@ public class Solution {
                 System.out.println("Second largest element of double array = " + secondLargest(doubleArray));
                 System.out.println("\nPlease enter type of array you would like to create (int/double). Or type exit to stop application.");
             } else if ("int".equals(typeName)) {
-                int[] intArray = {745, 2, 234, -3452, 4, 456, 745, 357, 0};
+                int[] intArray = {7, 2, -234, -3, 4, 46, 45, 7};
                 System.out.println("Now we'll test methods with int[] : " + Arrays.toString(intArray));
 
                 System.out.println("Summary of int array items = " + sum(intArray));
