@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ArraysUtils {
+public final class ArraysUtils {
 
     public static final int[] reverse(int[] array){
         // arrayCopy is created in order to not to change original array
