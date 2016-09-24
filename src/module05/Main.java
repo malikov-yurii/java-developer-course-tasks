@@ -12,5 +12,6 @@ public class Main {
         System.out.println(Arrays.toString(controller.check(new BookingComAPI(), new GoogleAPI())));
         System.out.println(Arrays.toString(controller.check(new TripAdvisorAPI(), new GoogleAPI())));
         System.out.println(Arrays.toString(controller.check(new BookingComAPI(), new TripAdvisorAPI())));
+
     }
 }

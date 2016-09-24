@@ -1,7 +1,10 @@
 package module02.task01;
 
+import module06.ArraysUtils;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Solution {
@@ -166,9 +169,13 @@ public class Solution {
                 System.out.println("Second largest element of double array = " + secondLargest(doubleArray));
                 System.out.println("\nPlease enter type of array you would like to create (int/double). Or type exit to stop application.");
             } else if ("int".equals(typeName)) {
-                int[] intArray = {745, 2, 745, 234, -3452, 4, 456, 745, 357, 0};
-                System.out.println("Now we'll test methods with int[]");
+                int[] intArray = {745, 2, 234, -3452, 4, 456, 745, 357, 0};
+                System.out.println("Now we'll test methods with int[] : " + Arrays.toString(intArray));
+
                 System.out.println("Summary of int array items = " + sum(intArray));
+                System.out.println("Find even elements = " + Arrays.toString(ArraysUtils.findEvenElements(intArray)));
+                System.out.println("Reverse array = " + Arrays.toString(ArraysUtils.reverse(intArray)));
+
                 System.out.println("Minimum item of int array = " + min(intArray));
                 System.out.println("Maximum item of int array items = " + max(intArray));
                 System.out.println("Maximum positive item of int array items = " + maxPositive(intArray));
