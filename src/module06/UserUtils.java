@@ -1,6 +1,7 @@
 package module06;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UserUtils {
@@ -24,21 +25,21 @@ public class UserUtils {
 
     public static final User[] paySalaryToUsers(User[] users) {
         return Arrays.stream(users)
-                .filter(user -> user != null)
-                .map(user -> new User(user.getId(), user.getFirstName(), user.getLastName(), user.getSalary(), user.getBalance() + user.getSalary()))
+                .filter(Objects::nonNull)
+                .peek(user -> user.setSalary(user.getBalance() + user.getSalary()))
                 .toArray(User[]::new);
     }
 
     public static final long[] getUsersId(User[] users) {
         return Arrays.stream(users)
-                .filter(user -> user != null)
+                .filter(Objects::nonNull)
                 .mapToLong(User::getId)
                 .toArray();
     }
 
     public static User[] deleteEmptyUsers(User[] users) {
         return Arrays.stream(users)
-                .filter(user -> user != null)
+                .filter(Objects::nonNull)
                 .toArray(User[]::new);
     }
 }
