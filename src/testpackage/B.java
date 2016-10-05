@@ -8,7 +8,7 @@ public class B extends A {
     }
 
     public static void main(String[] args) {
-        A.m1();
-        A.m1();
+//        A.m1();
+//        A.m1();
     }
 }
