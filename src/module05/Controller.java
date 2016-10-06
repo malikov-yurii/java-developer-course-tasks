@@ -4,25 +4,22 @@ import java.util.*;
 
 public class Controller {
 
-    API apis[] = new API[]{new BookingComAPI(), new GoogleAPI(), new TripAdvisorAPI()};
+    Set<API> apis = new HashSet<>(Arrays.asList(new BookingComAPI(), new GoogleAPI(), new TripAdvisorAPI()));
 
-    public Room[] requestRooms(int price, int persons, String city, String hotel) {
-        Set<Room> roomsSet= new HashSet<>();
-        for (API api : apis){
-            Room roomsArr[] = api.findRooms(price, persons, city, hotel);
-            if (roomsArr != null)
-                roomsSet.addAll(Arrays.asList(roomsArr));
-        }
-        return roomsSet != null ? roomsSet.toArray(new Room[]{}) : null;
+    public Set<Room> requestRooms(int price, int persons, String city, String hotel) {
+        Set<Room> resultSet = new HashSet<>();
+        for (API api : apis)
+            resultSet.addAll(api.findRooms(price, persons, city, hotel));
+        return resultSet;
     }
 
-    public Room[] check(API api1, API api2) {
-        Set<Room> roomsSet = new HashSet<>();
+    public Set<Room> check(API api1, API api2) {
+        Set<Room> resultSet = new HashSet<>();
         for (Room room1 : api1.findRooms(200, 2, "NY", "Metropol"))
             for (Room room2 : api2.findRooms(200, 2, "NY", "Metropol"))
                 if (room1.equals(room2))
-                    roomsSet.add(room1);
-        return roomsSet.toArray(new Room[]{});
+                    resultSet.add(room1);
+        return resultSet;
     }
 }
 
