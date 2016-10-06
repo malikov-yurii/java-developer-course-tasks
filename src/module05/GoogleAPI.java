@@ -22,6 +22,16 @@ public class GoogleAPI implements API {
                 room.getPersons() == persons &&
                 room.getCityName().equals(city) &&
                 room.getHotelName().equals(hotel)).collect(Collectors.toSet());
+/*
+        Set<Room> matchedRooms = new HashSet<>();
+        for (Room room : rooms)
+            if (room.getPrice() == price &&
+                    room.getPersons() == persons &&
+                    room.getCityName().equals(city) &&
+                    room.getHotelName().equals(hotel))
+                matchedRooms.add(room);
+        return matchedRooms;
+*/
     }
 }
 

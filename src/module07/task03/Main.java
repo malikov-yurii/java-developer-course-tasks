@@ -1,5 +1,6 @@
 package module07.task03;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import module07.*;
 import module07.Currency;
 
@@ -8,6 +9,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
         Set<Order> orders = new TreeSet<>(Arrays.asList(
                 new Order(10, 11100, module07.Currency.UAH, "Lamp", "Godman Store0", new User(1110, "Bob0", "Marley0", "Kiev", 1000)),
                 new Order(10, 11100, module07.Currency.UAH, "Lamp0", "Godman Store0", new User(1110, "Bob0", "Marley0", "Kiev", 1000)),
@@ -21,8 +23,35 @@ public class Main {
                 new Order(18, 11, module07.Currency.USD, "Lamp8", "Godman Store8", new User(1118, "Bob8", "Marley8", "Rovno", 1008))
         ));
 
-        System.out.println(orders.stream().anyMatch(order -> "Petrov".equals(order.getUser().getLastName())));
-        System.out.println(orders.stream().max(((o1, o2) -> o1.getPrice() - o2.getPrice())).get());
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        System.out.println(
+                orders.stream().anyMatch(order -> "Petrov".equals(order.getUser().getLastName())) ?
+                        "Petrov is in orders" :
+                        "Petrov isn't present in orders");
+/*
+        for (Order order : orders) {
+            if ("Petrov".equals(order.getUser().getLastName())) {
+                System.out.println("Petrov is in orders");
+                break;
+            }
+            System.out.println("Petrov isn't present in orders");
+        }
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        System.out.println("\nOrder with max price is " + orders.stream().max(((o1, o2) -> o1.getPrice() - o2.getPrice())).get());
+/*
+        Iterator<Order> iterator1 = orders.iterator();
+        Order maxPriceOrder = iterator1.next();
+        while (iterator1.hasNext()) {
+            Order order = iterator1.next();
+            if (order.getPrice() > maxPriceOrder.getPrice())
+                maxPriceOrder = order;
+        }
+        System.out.println("Order with max price is " + maxPriceOrder );
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Iterator<Order> iterator = orders.iterator();
         while (iterator.hasNext())

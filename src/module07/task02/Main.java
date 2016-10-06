@@ -1,9 +1,9 @@
 package module07.task02;
 
 import module07.*;
+import module07.Currency;
 
 import java.util.*;
-import java.util.Currency;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -22,6 +22,9 @@ public class Main {
         );
 
         orders.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+        System.out.println("\nOrders are sorted with price (with descending order): \n" + orders);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.sort((o1, o2) -> {
             int result = o1.getPrice() - o2.getPrice();
@@ -29,6 +32,9 @@ public class Main {
                 return o1.getUser().getCity().compareTo(o2.getUser().getCity());
             return result;
         });
+        System.out.println("\nOrders are sorted with price and city: \n" + orders);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
         orders.sort((o1, o2) -> {
             int result = o1.getPrice() - o2.getPrice();
@@ -39,14 +45,30 @@ public class Main {
             }
             return result;
         });
+        System.out.println("\nOrders are sorted with price, shop and city: \n" + orders);
 
-        orders = orders.stream().distinct().collect(Collectors.toList());
+/////////////////////////////////////////////////////////////////////////////////////////////
 
+        orders = new ArrayList<>(new HashSet<>(orders));
+
+//      orders = orders.stream().distinct().collect(Collectors.toList());
+        System.out.println("\nAll orders are unique now: \n" + orders);
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        Iterator<Order> iterator = orders.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getPrice() < 1500)
+                iterator.remove();
+        }
 //      orders = orders.stream().filter(order -> order.getPrice() > 1500).collect(Collectors.toList());
-        for (int i = 0; i < orders.size(); i++)
-            if (orders.get(i).getPrice() < 1500)
-                orders.remove(i);
+        System.out.println("\nOrders not less than 1500 price: \n" + orders);
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Map<Currency, List<Order>> ordersByCurrency = orders.stream().collect(Collectors.groupingBy(order -> order.getCurrency()));
+
+/*
         List<Order> uahCurrency = new ArrayList<>();
         List<Order> usdCurrency = new ArrayList<>();
         for (Order order : orders)
@@ -54,9 +76,23 @@ public class Main {
                 uahCurrency.add(order);
             else
                 usdCurrency.add(order);
+*/
+        System.out.println("\nOrders by currency: \n");
+        for (Map.Entry<Currency, List<Order>> entry : ordersByCurrency.entrySet())
+            System.out.println(entry.getValue());
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Map<String, List<Order>> ordersByCity = orders.stream().collect(Collectors.groupingBy(order -> order.getUser().getCity()));
-
+/*
+        Map<String, List<Order>> ordersByCity = new HashMap<>();
+        for (Order order : orders) {
+            if (!ordersByCity.containsKey(order.getUser().getCity()))
+                ordersByCity.put(order.getUser().getCity(), new ArrayList<>());
+            ordersByCity.get(order.getUser().getCity()).add(order);
+        }
+*/
+        System.out.println("\nOrders by city: \n");
         for (Map.Entry<String, List<Order>> entry : ordersByCity.entrySet()) {
             System.out.println(entry.getValue());
         }
