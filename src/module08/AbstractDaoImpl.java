@@ -3,7 +3,7 @@ package module08;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractDaoImpl<T extends BaseItem> implements AbstractDao<T> {
+public class AbstractDaoImpl<T extends BaseItem>  implements AbstractDao<T> {
 //  I'd like to create Map<Long, T> database = new HashMap<>(); but task 8.2 said it should be List out;
     List<T> out = new ArrayList<>();
 
