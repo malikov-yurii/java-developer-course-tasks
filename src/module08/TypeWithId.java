@@ -1,5 +1,5 @@
 package module08;
 
-public interface BaseItem {
+public interface TypeWithId {
     long getId();
 }

@@ -2,7 +2,7 @@ package module08;
 
 import java.util.List;
 
-public interface AbstractDao<T extends BaseItem> {
+public interface AbstractDao<T extends TypeWithId> {
     T save(T object);
     void delete(T object);
     void deleteAll(List<T> list);
