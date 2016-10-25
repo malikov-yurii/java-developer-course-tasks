@@ -4,6 +4,7 @@ import module07.*;
 import module07.Currency;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -121,12 +122,13 @@ public class Main {
         orders.stream().filter(order -> order.getPrice() < 1500).forEach(System.out::print);
 
         System.out.println("\nOrders by currency:");
+        BiConsumer<Currency, List<Order>> ordersByCurrencyPrint = (currency, ordersByCurrency) -> {
+            System.out.println("\n" + currency + " list:\n");
+            ordersByCurrency.forEach(System.out::print);
+        };
         orders.stream()
                 .collect(Collectors.groupingBy(order -> order.getCurrency()))
-                .forEach((currency, ordersByCurrency) -> {
-                    System.out.println("\n" + currency + " list:\n");
-                    ordersByCurrency.forEach(System.out::print);
-                });
+                .forEach(ordersByCurrencyPrint);
 
         System.out.println("\nOrders by city:");
         orders.stream()
