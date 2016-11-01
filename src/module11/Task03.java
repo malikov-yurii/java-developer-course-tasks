@@ -16,16 +16,14 @@ public class Task03 {
         Map<String, String> map = new HashMap<>();
         map.put("to", "TOTOTO");
         map.put("a", "AAA");
-        new Task03().fileContentMerger(map);
+        fileContentMerger(map);
     }
 
-    public File fileContentMerger(Map<String, String> map) throws IOException {
+    public static File fileContentMerger(Map<String, String> map) throws IOException {
 /*
         System.out.print("Enter file name: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         byte[] encoded = Files.readAllBytes(Paths.get(br.readLine()));
-        br.close();
-        br.close();
         br.close();
 */
         String path = "src/module11/1.txt";

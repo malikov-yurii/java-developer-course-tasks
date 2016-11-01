@@ -13,10 +13,10 @@ public class Task01 {
         map.put("to", "TOTOTO");
         map.put("a", "AAA");
 
-        System.out.println("Formatted file:\n" + new Task01().replacer(map));
+        System.out.println("Formatted file:\n" + replacer(map));
     }
 
-    public String replacer(Map<String, String> map) throws IOException {
+    public static String replacer(Map<String, String> map) throws IOException {
 /*
         System.out.print("Enter file name: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

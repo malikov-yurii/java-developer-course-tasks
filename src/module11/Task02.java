@@ -14,10 +14,10 @@ public class Task02 {
         Map<String, String> map = new HashMap<>();
         map.put("to", "TOTOTO");
         map.put("a", "AAA");
-        new Task02().replacer(map);
+        replacer(map);
     }
 
-    public File replacer(Map<String, String> map) throws IOException {
+    public static File replacer(Map<String, String> map) throws IOException {
 /*
         System.out.print("Enter file name: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
