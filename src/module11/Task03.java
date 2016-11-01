@@ -27,9 +27,7 @@ public class Task03 {
         br.close();
 */
         String path = "src/module11/1.txt";
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-
-        String fileText = new String(encoded, StandardCharsets.UTF_8);
+        String fileText = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
             fileText = fileText.replaceAll("\\b" + entry.getKey() + "\\b", entry.getValue());

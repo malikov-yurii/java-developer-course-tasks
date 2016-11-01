@@ -16,8 +16,9 @@ public class Task04 {
     }
 
     public static int checkWord(String word) throws IOException{
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        String fileText = new String(encoded, StandardCharsets.UTF_8);
-        return (int) Arrays.stream(fileText.split("\\b\\W+\\b")).filter(u -> word.equals(u)).count();
+        return (int) Arrays.stream(new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8)
+                .split("\\b\\W+\\b"))
+                .filter(u -> word.equals(u))
+                .count();
     }
 }
