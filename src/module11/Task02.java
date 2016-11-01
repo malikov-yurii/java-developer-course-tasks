@@ -1,22 +1,23 @@
 package module11;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Task01 {
+public class Task02 {
     public static void main(String[] args) throws IOException {
         Map<String, String> map = new HashMap<>();
         map.put("to", "TOTOTO");
         map.put("a", "AAA");
-
-        System.out.println("Formatted file:\n" + new Task01().replacer(map));
+        new Task02().replacer(map);
     }
 
-    public String replacer(Map<String, String> map) throws IOException {
+    public File replacer(Map<String, String> map) throws IOException {
 /*
         System.out.print("Enter file name: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,6 +33,10 @@ public class Task01 {
             fileText = fileText.replaceAll("\\b" + entry.getKey() + "\\b", entry.getValue());
         }
 
-        return fileText;
+        try (PrintWriter printWriter = new PrintWriter(path)) {
+            printWriter.print(fileText);
+        }
+
+        return new File(path);
     }
 }
