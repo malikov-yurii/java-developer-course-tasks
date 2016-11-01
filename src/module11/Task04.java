@@ -18,7 +18,7 @@ public class Task04 {
     public static int checkWord(String word) throws IOException{
         return (int) Arrays.stream(new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8)
                 .split("\\b\\W+\\b"))
-                .filter(u -> word.equals(u))
+                .filter(u -> u.equals(word))
                 .count();
     }
 }
