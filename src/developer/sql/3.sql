@@ -1,4 +1,4 @@
-SELECT sum(t1.java_developer_salary)
+SELECT sum(t1.java_developer_salary) AS total_salary_of_javists
 FROM
   (
     SELECT salary AS java_developer_salary
