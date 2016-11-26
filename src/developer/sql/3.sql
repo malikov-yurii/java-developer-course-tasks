@@ -1,8 +1,7 @@
-SELECT sum(t1.java_developer_salary) AS total_salary_of_javists
+SELECT sum(developers.salary) AS total_sum_of_javists_salary
 FROM
-  (
-    SELECT salary AS java_developer_salary
-    FROM developers
-      INNER JOIN developers_skills
-        ON developers.id = developers_skills.developer_id AND developers_skills.skill_id = 1
-  ) AS t1;
+  developers
+  INNER JOIN developers_skills ON developers.id = developers_skills.developer_id
+  INNER JOIN skills ON skills.id = developers_skills.skill_id
+GROUP BY skills.name
+HAVING skills.name LIKE 'Java';

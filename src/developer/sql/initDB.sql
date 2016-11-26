@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS developers_skills;
+DROP TABLE IF EXISTS projects_developers;
 DROP TABLE IF EXISTS developers;
 DROP TABLE IF EXISTS skills;
 DROP TABLE IF EXISTS projects;
@@ -28,9 +29,16 @@ CREATE TABLE developers (
   id         SERIAL  NOT NULL PRIMARY KEY,
   name       VARCHAR NOT NULL,
   company_id INTEGER NOT NULL,
-  project_id INTEGER,
-  FOREIGN KEY (company_id) REFERENCES companies (id) ON DELETE CASCADE,
-  FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE
+  FOREIGN KEY (company_id) REFERENCES companies (id) ON DELETE CASCADE
+);
+
+CREATE TABLE projects_developers (
+  project_id   INTEGER NOT NULL,
+  developer_id INTEGER NOT NULL,
+
+  FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE,
+  FOREIGN KEY (developer_id) REFERENCES developers (id) ON DELETE CASCADE,
+  CONSTRAINT projects_developers_constraint UNIQUE (project_id, developer_id)
 );
 
 CREATE TABLE skills (

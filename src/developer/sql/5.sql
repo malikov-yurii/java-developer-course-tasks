@@ -6,21 +6,17 @@ WITH
              (
                projects.cost -
                (SELECT sum(developers.salary)
-                FROM developers
-                WHERE developers.project_id = projects.id)
+                FROM developers, projects_developers
+                WHERE projects_developers.project_id = projects.id AND projects_developers.developer_id = developers.id)
              )                    AS profit_per_project
-           FROM projects
-             INNER JOIN developers ON projects.id = developers.project_id),
-
+           FROM projects),
     t2 AS (SELECT
              t1.company_id              AS company_id,
              t1.customer_id             AS customer_id,
              sum(t1.profit_per_project) AS sum_of_projects_profit_from_customer_per_company
            FROM t1
-
            GROUP BY
              company_id, t1.customer_id),
-
     t3 AS (SELECT
              t2.company_id                                            AS company_id,
              min(
@@ -29,7 +25,6 @@ WITH
              t2
            GROUP BY
              t2.company_id)
-
 SELECT
   companies.name                                      AS company_name,
   customers.name                                      AS worst_customer,

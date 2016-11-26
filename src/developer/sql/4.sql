@@ -1,4 +1,4 @@
-ALTER TABLE projects ADD COLUMN cost INTEGER DEFAULT 0;
+ALTER TABLE projects ADD COLUMN cost NUMERIC(10,2) DEFAULT 0;
 
 UPDATE projects SET cost = 1000000 WHERE id = 1;
 UPDATE projects SET cost = 2000000 WHERE id = 2;
