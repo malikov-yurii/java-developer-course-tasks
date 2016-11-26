@@ -14,19 +14,29 @@ WITH
 
     t2 AS (SELECT
              t1.company_id              AS company_id,
-             min(t1.profit_per_project) AS worst_profit_from_project_per_compamy
+             t1.customer_id             AS customer_id,
+             sum(t1.profit_per_project) AS sum_of_projects_profit_from_customer_per_company
            FROM t1
+
            GROUP BY
-             t1.company_id
-  )
+             company_id, t1.customer_id),
+
+    t3 AS (SELECT
+             t2.company_id                                            AS company_id,
+             min(
+                 t2.sum_of_projects_profit_from_customer_per_company) AS sum_of_projects_of_customer_with_min_profit_per_company
+           FROM
+             t2
+           GROUP BY
+             t2.company_id)
 
 SELECT
-  companies.name                           AS company_name,
-  customers.name                           AS customer_with_worst_project,
-  projects.name                            AS worst_progect_name,
-  t2.worst_profit_from_project_per_compamy AS worst_progect_income
-FROM t1
-  INNER JOIN t2 ON t1.company_id = t2.company_id AND t1.profit_per_project = t2.worst_profit_from_project_per_compamy
-  INNER JOIN customers ON t1.customer_id = customers.id
+  companies.name                                      AS company_name,
+  customers.name                                      AS worst_customer,
+  t2.sum_of_projects_profit_from_customer_per_company AS total_sum_of_worst_customer
+FROM t2
+  INNER JOIN t3 ON t3.company_id = t2.company_id
   INNER JOIN companies ON t2.company_id = companies.id
-  INNER JOIN projects ON t1.project_id = projects.id;
+  INNER JOIN customers ON t2.customer_id = customers.id
+WHERE
+  t2.sum_of_projects_profit_from_customer_per_company = t3.sum_of_projects_of_customer_with_min_profit_per_company;

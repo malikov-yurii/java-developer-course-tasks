@@ -12,6 +12,7 @@ INSERT INTO projects (name, company_id, customer_id) VALUES ('Alfa24', 2, 2);
 INSERT INTO projects (name, company_id, customer_id) VALUES ('Alfa24 mobile', 3, 2);
 INSERT INTO projects (name, company_id, customer_id) VALUES ('Oschad24', 3, 3);
 INSERT INTO projects (name, company_id, customer_id) VALUES ('Oschad24 mobile', 1, 3);
+INSERT INTO projects (name, company_id, customer_id) VALUES ('Privat24 old', 1, 1);
 
 INSERT INTO developers (name, company_id, project_id) VALUES ('Rob', 1, 1);
 INSERT INTO developers (name, company_id, project_id) VALUES ('Bob', 1, 6);
@@ -25,6 +26,8 @@ INSERT INTO developers (name, company_id, project_id) VALUES ('Nick', 2, 2);
 INSERT INTO developers (name, company_id, project_id) VALUES ('Mick', 2, 3);
 INSERT INTO developers (name, company_id, project_id) VALUES ('Toss', 3, 4);
 INSERT INTO developers (name, company_id, project_id) VALUES ('Loss', 3, 5);
+INSERT INTO developers (name, company_id, project_id) VALUES ('Zob', 1, 7);
+
 
 INSERT INTO skills (name) VALUES ('Java');
 INSERT INTO skills (name) VALUES ('C++');
